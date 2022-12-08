@@ -18,7 +18,17 @@ class Flashcard extends StatefulWidget {
 
 class _FlashcardState extends State<Flashcard> {
   int myindex = 0;
-
+  
+  final List<String> _topics = [];
+  
+  @override
+  void initState(){
+    for(var t in antonyms) {
+      if (!_topics.contains(t.topic)) {
+        _topics.add(t.topic);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +38,19 @@ class _FlashcardState extends State<Flashcard> {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         ),
-      body:
+      body:CustomScrollView(
+        slivers: [
+          SliverGrid(delegate: SliverChildBuilderDelegate(
+            childCount: _topics.length,
+              (context, index) => TopicTile(topic: _topics[index]),),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 6,
+                mainAxisSpacing: 6,
+              ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.add),
