@@ -56,7 +56,9 @@ class _SecondPageState extends State<SecondPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               TextButton(child: const Text('Show Answer'),
-                onPressed: () {} ,
+                onPressed: () {
+
+                } ,
               ),
               IconButton(
                 icon: const Icon(Icons.arrow_forward_ios_sharp),
@@ -77,7 +79,7 @@ class _SecondPageState extends State<SecondPage> {
             icon: const Icon(Icons.numbers),
             label: 'Practice',
             backgroundColor: Colors.grey[600],
-          ),
+            ),
         ],
       ),
     );

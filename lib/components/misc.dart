@@ -14,6 +14,52 @@ icon: const Icon(Icons.delete),
 ),
 
 
+@override
+void initState() {
+  for (var t in antonyms) {
+    if (!_topics.contains(t.topic)) {
+      _topics.add(t.topic);
+    }
+  }
+}
+
+
+bottomNavigationBar: BottomNavigationBar(
+type: BottomNavigationBarType.shifting,
+onTap: (index) {
+setState(() {
+myindex = index;
+});
+},
+currentIndex: myindex,
+items: [
+BottomNavigationBarItem(
+label: 'Cards',
+backgroundColor: Colors.grey[600], icon: const Icon(Icons.numbers),
+),
+BottomNavigationBarItem(
+tooltip: ('Practice'),
+label: 'Practice',
+backgroundColor: Colors.grey[600], icon: const Icon(Icons.numbers),
+),
+],
+),
+
+CustomScrollView(
+slivers: [
+SliverGrid(delegate: SliverChildBuilderDelegate(
+childCount: _topics.length,
+(context, index) => TopicTile(topic: _topics[index]),),
+gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+crossAxisCount: 2,
+crossAxisSpacing: 6,
+mainAxisSpacing: 6,
+),
+),
+],
+),
+
+
 
 children: [
 Row(
