@@ -8,6 +8,14 @@ endIndent: 15,
 ),
 widgetList[myindex],
 
+onChanged: (value2) {
+data = value2 as List<String>;
+},
+
+await flashcards
+    .add({'data': 'Yes', 'opposite': 'No'}).then(
+(value) => print('User Added'));
+
 IconButton(
 onPressed: () {} ,
 icon: const Icon(Icons.delete),
@@ -23,6 +31,13 @@ void initState() {
   }
 }
 
+
+header: Text(data[index]),
+footer: Text(opposite[index]),
+child: Padding(
+padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
+child: IconButton
+),
 
 bottomNavigationBar: BottomNavigationBar(
 type: BottomNavigationBarType.shifting,
